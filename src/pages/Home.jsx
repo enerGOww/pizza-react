@@ -1,9 +1,7 @@
-import Categories from "../components/Categories";
-import Sort from "../components/Sort";
-import PizzaBlock from "../components/PizzaBlock";
-import React from "react";
+import React from "react"
+import {Categories, Sort, PizzaBlock} from "../components"
 
-export default function Home() {
+function Home({items}) {
   return (
     <div className="container">
       <div className="content__top">
@@ -12,16 +10,10 @@ export default function Home() {
       </div>
       <h2 className="content__title">Все пиццы</h2>
       <div className="content__items">
-        <PizzaBlock />
-        <PizzaBlock />
-        <PizzaBlock />
-        <PizzaBlock />
-        <PizzaBlock />
-        <PizzaBlock />
-        <PizzaBlock />
-        <PizzaBlock />
-        <PizzaBlock />
+        {items && items.map(item => <PizzaBlock key={item.id} {...item}/>)}
       </div>
     </div>
   )
 }
+
+export default Home

@@ -1,9 +1,9 @@
-import React from "react";
-import Button from "../components/Button";
-import {Link} from "react-router-dom";
+import React from "react"
+import Button from "../components/Button"
+import {Link} from "react-router-dom"
 import emptyCart from "../assets/img/empty-cart.png"
 
-export default function Cart() {
+function Cart() {
   return (
     <div className="container container--cart">
       <div className="cart cart--empty">
@@ -22,3 +22,5 @@ export default function Cart() {
     </div>
   )
 }
+
+export default Cart

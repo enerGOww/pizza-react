@@ -1,9 +1,9 @@
-import logoSvg from "../assets/img/pizza-logo.svg";
-import React from "react";
-import Button from "./Button";
-import {Link} from "react-router-dom";
+import logoSvg from "../assets/img/pizza-logo.svg"
+import React from "react"
+import {Link} from "react-router-dom"
+import Button from "./Button"
 
-export default function Header() {
+function Header() {
   return (
     <div className="header">
       <div className="container">
@@ -58,3 +58,5 @@ export default function Header() {
     </div>
   )
 }
+
+export default Header

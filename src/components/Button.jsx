@@ -1,7 +1,7 @@
-import React from "react";
+import React from "react"
 import classNames from "classnames"
 
-export default function Button(props) {
+function Button(props) {
   return (
     <button className={classNames('button', props.className, {
       'button--outline': props.outline
@@ -10,3 +10,5 @@ export default function Button(props) {
     </button>
   )
 }
+
+export default Button

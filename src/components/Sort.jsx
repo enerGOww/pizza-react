@@ -1,10 +1,10 @@
-import React from "react";
+import React from "react"
 
-export default function Sort() {
+function Sort() {
   const items = ['популярности', 'цене', 'алфавиту']
 
   const [visiblePopup, setVisiblePopup] = React.useState(false)
-  const [activeItem, setActiveItem] = React.useState('популярности')
+  const [activeItem, setActiveItem] = React.useState(items[0])
   const sortRef = React.useRef()
 
   const toggleVisiblePopup = () => setVisiblePopup(!visiblePopup)
@@ -61,3 +61,5 @@ export default function Sort() {
     </div>
   )
 }
+
+export default Sort
