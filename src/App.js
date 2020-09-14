@@ -1,33 +1,17 @@
 import React from 'react'
 import './scss/app.scss'
 import Header from "./components/Header";
-import Categories from "./components/Categories";
-import Sort from "./components/Sort";
-import PizzaBlock from "./components/PizzaBlock";
+import Home from "./pages/Home";
+import Route from "react-router-dom/es/Route";
+import Cart from "./pages/Cart";
 
 function App() {
   return (
     <div className="wrapper">
       <Header />
       <div className="content">
-        <div className="container">
-          <div className="content__top">
-            <Categories items={['Мясные', 'Вегетарианская', 'Гриль', 'Острые', 'Закрытые']} />
-            <Sort />
-          </div>
-          <h2 className="content__title">Все пиццы</h2>
-          <div className="content__items">
-            <PizzaBlock />
-            <PizzaBlock />
-            <PizzaBlock />
-            <PizzaBlock />
-            <PizzaBlock />
-            <PizzaBlock />
-            <PizzaBlock />
-            <PizzaBlock />
-            <PizzaBlock />
-          </div>
-        </div>
+        <Route path="/" component={Home} exact />
+        <Route path="/cart" component={Cart} exact />
       </div>
     </div>
   )
