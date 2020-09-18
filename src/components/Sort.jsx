@@ -1,19 +1,22 @@
 import React from "react"
+import {inject, observer} from "mobx-react"
 
-function Sort() {
+const sort = inject(
+  'pizzaStore'
+)(observer(({pizzaStore}) => {
   const items = [
-    {name: 'популярности', type: 'popular'},
+    {name: 'популярности', type: 'id'},
     {name: 'цене', type: 'price'},
-    {name: 'алфавиту', type: 'alphabet'}
+    {name: 'алфавиту', type: 'name'}
   ]
 
   const [visiblePopup, setVisiblePopup] = React.useState(false)
-  const [activeItem, setActiveItem] = React.useState(items[0].name)
+  const activeItem = pizzaStore.sorter.name
   const sortRef = React.useRef()
 
   const toggleVisiblePopup = () => setVisiblePopup(!visiblePopup)
-  const selectActiveItem = name => {
-    setActiveItem(name)
+  const selectActiveItem = item => {
+    pizzaStore.setSorter(item)
     setVisiblePopup(false)
   }
 
@@ -50,13 +53,13 @@ function Sort() {
       {visiblePopup &&
         <div className="sort__popup">
           <ul>
-            {items.map(({name}) => (
+            {items.map(item => (
               <li
-                className={activeItem === name ? 'active' : ''}
-                onClick={() => selectActiveItem(name)}
-                key={name}
+                className={activeItem === item.name ? 'active' : ''}
+                onClick={() => selectActiveItem(item)}
+                key={item.name}
               >
-                {name}
+                {item.name}
               </li>
             ))}
           </ul>
@@ -64,6 +67,6 @@ function Sort() {
       }
     </div>
   )
-}
+}))
 
-export default Sort
+export default sort

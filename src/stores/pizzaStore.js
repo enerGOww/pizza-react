@@ -1,5 +1,5 @@
 import axios from "axios"
-import {action, computed, decorate, observable} from "mobx";
+import {action, computed, decorate, observable} from "mobx"
 
 class PizzaStore {
   pizzaData = {
@@ -7,13 +7,30 @@ class PizzaStore {
     isLoading: true
   }
 
-  get getPizzaData() {
-    return this.pizzaData
+  sorter = {name: 'популярности', type: 'id'}
+  category = null
+
+  get getIsLoading() {
+    return this.pizzaData.isLoading
+  }
+
+  get getFilteredAndSortedItems() {
+    return this.pizzaData.items
+      .sort((a, b) => this.compare(a, b))
+      .filter(({category}) => this.category === null ? true : category === this.category)
   }
 
   setItems(items) {
     this.pizzaData.items = items
     this.pizzaData.isLoading = false
+  }
+
+  setSorter(sorter) {
+    this.sorter = sorter
+  }
+
+  setCategory(category) {
+    this.category = category
   }
 
   fetchItems() {
@@ -25,12 +42,29 @@ class PizzaStore {
       this.setItems(data.pizzas)
     })
   }
+
+  compare(a, b) {
+    if (a[this.sorter.type] < b[this.sorter.type]) {
+      return -1
+    }
+    if (a[this.sorter.type] > b[this.sorter.type]) {
+      return 1
+    }
+
+    return 0
+  }
 }
 
 decorate(PizzaStore, {
-  setItems: action,
   pizzaData: observable,
-  getPizzaData: computed,
+  sorter: observable,
+  category: observable,
+  getIsLoading: computed,
+  getFilteredAndSortedItems: computed,
+  setSorter: action,
+  setItems: action,
+  setCategory: action,
 })
+
 
 export default PizzaStore

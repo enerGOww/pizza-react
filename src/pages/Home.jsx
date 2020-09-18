@@ -5,7 +5,8 @@ import {inject, observer} from "mobx-react"
 const home = inject(
   'pizzaStore'
 )(observer(({pizzaStore}) => {
-  const {items, isLoading} = pizzaStore.getPizzaData
+  const isLoading = pizzaStore.getIsLoading
+  const items = pizzaStore.getFilteredAndSortedItems
 
   React.useEffect(() => {
     pizzaStore.updateItems()
@@ -14,7 +15,7 @@ const home = inject(
   return (
     <div className="container">
       <div className="content__top">
-        <Categories items={['Мясные', 'Вегетарианская', 'Гриль', 'Острые', 'Закрытые']} />
+        <Categories categories={['Мясные', 'Вегетарианская', 'Гриль', 'Острые', 'Закрытые']} />
         <Sort />
       </div>
       <h2 className="content__title">Все пиццы</h2>

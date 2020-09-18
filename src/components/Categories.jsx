@@ -1,24 +1,31 @@
 import React from "react"
+import {inject, observer} from "mobx-react";
 
-function Categories({items}) {
-  const [activeItem, setActiveItem] = React.useState(null)
-
+const categories = inject(
+  'pizzaStore'
+)(observer(({pizzaStore, categories}) => {
+  const activeCategory = pizzaStore.category
   return (
     <div className="categories">
       <ul>
-        <li className={activeItem === null ? 'active' : ''} onClick={() => setActiveItem(null)}>Все</li>
-        {items && items.map(name => (
+        <li
+          className={activeCategory === null ? 'active' : ''}
+          onClick={() => pizzaStore.setCategory(null)}
+        >
+          Все
+        </li>
+        {categories && categories.map((category, index) => (
           <li
-            className={activeItem === name ? 'active' : ''}
-            key={name}
-            onClick={() => setActiveItem(name)}
+            className={activeCategory === index ? 'active' : ''}
+            key={category}
+            onClick={() => pizzaStore.setCategory(index)}
           >
-            {name}
+            {category}
           </li>
         ))}
       </ul>
     </div>
   )
-}
+}))
 
-export default Categories
+export default categories
