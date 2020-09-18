@@ -1,7 +1,16 @@
 import React from "react"
 import {Categories, Sort, PizzaBlock} from "../components"
+import {inject, observer} from "mobx-react"
 
-function Home({items}) {
+const home = inject(
+  'pizzaStore'
+)(observer(({pizzaStore}) => {
+  const {items, isLoading} = pizzaStore.getPizzaData
+
+  React.useEffect(() => {
+    pizzaStore.updateItems()
+  }, [])
+
   return (
     <div className="container">
       <div className="content__top">
@@ -10,10 +19,13 @@ function Home({items}) {
       </div>
       <h2 className="content__title">Все пиццы</h2>
       <div className="content__items">
-        {items && items.map(item => <PizzaBlock key={item.id} {...item}/>)}
+        {isLoading === true
+          ? <h1>loading</h1>
+          : items.map(item => <PizzaBlock key={item.id} {...item}/>)
+        }
       </div>
     </div>
   )
-}
+}))
 
-export default Home
+export default home
