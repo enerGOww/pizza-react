@@ -33,7 +33,7 @@ class PizzaStore {
   }
 
   _fetchItems() {
-    return axios.get('http://localhost:3000/db.json')
+    return axios.get('https://pizza-react.vercel.app/db.json')
   }
 
   updateItems() {
