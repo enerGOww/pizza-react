@@ -2,8 +2,11 @@ import logoSvg from "../assets/img/pizza-logo.svg"
 import React from "react"
 import {Link} from "react-router-dom"
 import {Button} from "./index"
+import {inject, observer} from "mobx-react";
 
-function Header() {
+const header = inject(
+  'cartStore'
+)(observer(({cartStore}) => {
   return (
     <div className="header">
       <div className="container">
@@ -19,7 +22,7 @@ function Header() {
         <div className="header__cart">
           <Link to="/cart">
             <Button className="button--cart">
-              <span>520 ₽</span>
+              <span>{cartStore.totalPrice} ₽</span>
               <div className="button__delimiter"></div>
               <svg
                 width="18"
@@ -50,13 +53,13 @@ function Header() {
                   strokeLinejoin="round"
                 />
               </svg>
-              <span>3</span>
+              <span>{cartStore.totalCount}</span>
             </Button>
           </Link>
         </div>
       </div>
     </div>
   )
-}
+}))
 
-export default Header
+export default header

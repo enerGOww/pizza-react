@@ -4,7 +4,6 @@ import {inject, observer} from "mobx-react"
 const sort = inject(
   'pizzaStore'
 )(observer(({pizzaStore, items}) => {
-
   const [visiblePopup, setVisiblePopup] = React.useState(false)
   const activeItem = pizzaStore.sorter.name
   const sortRef = React.useRef()
@@ -15,7 +14,8 @@ const sort = inject(
     setVisiblePopup(false)
   }
 
-  const handleOutsideClick = ({path}) => {
+  const handleOutsideClick = event => {
+    const path = event.path || (event.composedPath && event.composedPath())
     if(!path.includes(sortRef.current)) {
       setVisiblePopup(false)
     }

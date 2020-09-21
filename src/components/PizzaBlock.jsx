@@ -1,10 +1,13 @@
 import React from "react"
+import {inject} from "mobx-react"
+import {availableTypes} from "../consts"
 
-function PizzaBlock({name, sizes, types, imageUrl, price}) {
+const pizzaBlock = inject('cartStore')
+(({cartStore, id, name, sizes, types, imageUrl, price}) => {
   const [activeSize, setActiveSize] = React.useState(sizes[0])
   const [activeType, setActiveType] = React.useState(types[0])
-  const availableTypes = ['тонкое', 'традиционное']
 
+  const addToCard = () => cartStore.setItem({id, name, size: activeSize, type: activeType, imageUrl, price})
   return (
     <div className="pizza-block">
       <img
@@ -52,12 +55,12 @@ function PizzaBlock({name, sizes, types, imageUrl, price}) {
               fill="white"
             />
           </svg>
-          <span>Добавить</span>
+          <span onClick={() => addToCard()}>Добавить</span>
           <i>1</i>
         </div>
       </div>
     </div>
   )
-}
+})
 
-export default PizzaBlock
+export default pizzaBlock

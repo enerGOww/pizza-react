@@ -15,7 +15,7 @@ class PizzaStore {
   get getFilteredAndSortedItems() {
     return this.items
       .slice()
-      .sort((a, b) => this.compare(a, b))
+      .sort((a, b) => this._compare(a, b))
       .filter(({category}) => this.category === null ? true : category === this.category)
   }
 
@@ -32,17 +32,17 @@ class PizzaStore {
     this.category = category
   }
 
-  fetchItems() {
+  _fetchItems() {
     return axios.get('http://localhost:3000/db.json')
   }
 
   updateItems() {
-    this.fetchItems().then(({data}) => {
+    this._fetchItems().then(({data}) => {
       this.setItems(data.pizzas)
     })
   }
 
-  compare(a, b) {
+  _compare(a, b) {
     if (a[this.sorter.type] < b[this.sorter.type]) {
       return -1
     }

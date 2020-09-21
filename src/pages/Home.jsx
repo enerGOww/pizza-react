@@ -1,7 +1,6 @@
 import React from "react"
 import {Categories, Sort, PizzaBlock, LoadingBlock} from "../components"
 import {inject, observer} from "mobx-react"
-import index from "mobx-react-devtools";
 
 const categories = ['Мясные', 'Вегетарианская', 'Гриль', 'Острые', 'Закрытые']
 const sortItems = [
@@ -24,7 +23,8 @@ const home = inject(
       </div>
       <h2 className="content__title">Все пиццы</h2>
       <div className="content__items">
-        {isLoading === true
+        {
+          isLoading === true
           ? Array(10).fill(0).map((_, index) => <LoadingBlock key={index} />)
           : items.map(item => <PizzaBlock key={item.id} {...item}/>)
         }
