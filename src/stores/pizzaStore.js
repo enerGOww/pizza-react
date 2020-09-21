@@ -2,6 +2,10 @@ import axios from "axios"
 import {action, computed, decorate, observable} from "mobx"
 
 class PizzaStore {
+  constructor() {
+    this.updateItems()
+  }
+
   items = []
   isLoading = true
 
