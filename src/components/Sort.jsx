@@ -3,12 +3,7 @@ import {inject, observer} from "mobx-react"
 
 const sort = inject(
   'pizzaStore'
-)(observer(({pizzaStore}) => {
-  const items = [
-    {name: 'популярности', type: 'id'},
-    {name: 'цене', type: 'price'},
-    {name: 'алфавиту', type: 'name'}
-  ]
+)(observer(({pizzaStore, items}) => {
 
   const [visiblePopup, setVisiblePopup] = React.useState(false)
   const activeItem = pizzaStore.sorter.name

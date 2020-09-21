@@ -7,7 +7,6 @@ import {BrowserRouter} from "react-router-dom"
 import stores from "./stores"
 import {Provider} from "mobx-react"
 
-window.store = stores
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>

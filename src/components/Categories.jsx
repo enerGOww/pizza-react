@@ -5,6 +5,7 @@ const categories = inject(
   'pizzaStore'
 )(observer(({pizzaStore, categories}) => {
   const activeCategory = pizzaStore.category
+
   return (
     <div className="categories">
       <ul>

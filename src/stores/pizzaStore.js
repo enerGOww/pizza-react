@@ -2,27 +2,22 @@ import axios from "axios"
 import {action, computed, decorate, observable} from "mobx"
 
 class PizzaStore {
-  pizzaData = {
-    items: [],
-    isLoading: true
-  }
+  items = []
+  isLoading = true
 
   sorter = {name: 'популярности', type: 'id'}
   category = null
 
-  get getIsLoading() {
-    return this.pizzaData.isLoading
-  }
-
   get getFilteredAndSortedItems() {
-    return this.pizzaData.items
+    return this.items
+      .slice()
       .sort((a, b) => this.compare(a, b))
       .filter(({category}) => this.category === null ? true : category === this.category)
   }
 
   setItems(items) {
-    this.pizzaData.items = items
-    this.pizzaData.isLoading = false
+    this.items = items
+    this.isLoading = false
   }
 
   setSorter(sorter) {
@@ -56,10 +51,10 @@ class PizzaStore {
 }
 
 decorate(PizzaStore, {
-  pizzaData: observable,
+  items: observable,
+  isLoading: observable,
   sorter: observable,
   category: observable,
-  getIsLoading: computed,
   getFilteredAndSortedItems: computed,
   setSorter: action,
   setItems: action,
