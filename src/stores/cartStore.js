@@ -51,6 +51,7 @@ decorate(CartStore, {
   increaseQuantity: action,
   decreaseQuantity: action,
   clearItems: action,
+  deleteItemById: action,
 })
 
 export default CartStore
