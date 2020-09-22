@@ -1,14 +1,16 @@
 import React from "react"
 import {inject, observer} from "mobx-react"
 
-const sort = inject(
+const Sort = inject(
   'pizzaStore'
 )(observer(({pizzaStore, items}) => {
   const [visiblePopup, setVisiblePopup] = React.useState(false)
   const activeItem = pizzaStore.sorter.name
+  const sort = pizzaStore.sort
   const sortRef = React.useRef()
 
   const toggleVisiblePopup = () => setVisiblePopup(!visiblePopup)
+  const toggleSort = () => pizzaStore.setSort(!sort)
   const selectActiveItem = item => {
     pizzaStore.setSorter(item)
     setVisiblePopup(false)
@@ -31,6 +33,8 @@ const sort = inject(
     <div className="sort" ref={sortRef}>
       <div className="sort__label">
         <svg
+          className={sort ? '' : 'rotated'}
+          onClick={toggleSort}
           width="10"
           height="6"
           viewBox="0 0 10 6"
@@ -64,4 +68,4 @@ const sort = inject(
   )
 }))
 
-export default sort
+export default Sort

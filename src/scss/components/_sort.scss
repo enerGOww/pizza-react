@@ -2,12 +2,21 @@
 
 .sort {
   position: relative;
+  user-select: none;
   &__label {
     display: flex;
     align-items: center;
 
     svg {
       margin-right: 8px;
+
+      &:hover {
+        cursor: pointer;
+      }
+
+      &.rotated {
+        transform: rotate(180deg);
+      }
     }
 
     b {

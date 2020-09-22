@@ -9,13 +9,14 @@ class PizzaStore {
   items = []
   isLoading = true
 
-  sorter = {name: 'популярности', type: 'id'}
+  sorter = {name: 'популярности', type: 'rating'}
+  sort = true // true ASK false DESK
   category = null
 
   get getFilteredAndSortedItems() {
     return this.items
       .slice()
-      .sort((a, b) => this._compare(a, b))
+      .sort((a, b) => this.sort ? this._compare(a, b) : this._compare(b, a))
       .filter(({category}) => this.category === null ? true : category === this.category)
   }
 
@@ -30,6 +31,10 @@ class PizzaStore {
 
   setCategory(category) {
     this.category = category
+  }
+
+  setSort(sort) {
+    this.sort = sort
   }
 
   _fetchItems() {
@@ -59,10 +64,12 @@ decorate(PizzaStore, {
   isLoading: observable,
   sorter: observable,
   category: observable,
+  sort: observable,
   getFilteredAndSortedItems: computed,
   setSorter: action,
   setItems: action,
   setCategory: action,
+  setSort: action,
 })
 
 

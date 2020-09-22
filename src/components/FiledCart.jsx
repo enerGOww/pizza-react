@@ -3,7 +3,7 @@ import {inject, observer} from "mobx-react"
 import {Link} from "react-router-dom"
 import {CartPizzaBlock} from "./index";
 
-const filedCart = inject(
+const FiledCart = inject(
   'cartStore'
 )(observer(({cartStore}) => {
   const items = []
@@ -72,4 +72,4 @@ const filedCart = inject(
   )
 }))
 
-export default filedCart
+export default FiledCart

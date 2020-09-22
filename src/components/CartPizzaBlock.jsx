@@ -2,7 +2,7 @@ import React from "react"
 import {inject, observer} from "mobx-react"
 import {availableTypes} from "../consts"
 
-const cartPizzaBlock = inject(
+const CartPizzaBlock = inject(
   'cartStore'
 )(observer(({cartStore, name, size, type, imageUrl, price, quantity, itemId}) => {
 
@@ -70,4 +70,4 @@ const cartPizzaBlock = inject(
   )
 }))
 
-export default cartPizzaBlock
+export default CartPizzaBlock

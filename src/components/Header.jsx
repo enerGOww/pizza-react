@@ -4,7 +4,7 @@ import {Link} from "react-router-dom"
 import {Button} from "./index"
 import {inject, observer} from "mobx-react";
 
-const header = inject(
+const Header = inject(
   'cartStore'
 )(observer(({cartStore}) => {
   return (
@@ -62,4 +62,4 @@ const header = inject(
   )
 }))
 
-export default header
+export default Header

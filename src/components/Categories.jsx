@@ -1,7 +1,7 @@
 import React from "react"
 import {inject, observer} from "mobx-react";
 
-const categories = inject(
+const Categories = inject(
   'pizzaStore'
 )(observer(({pizzaStore, categories}) => {
   const activeCategory = pizzaStore.category
@@ -29,4 +29,4 @@ const categories = inject(
   )
 }))
 
-export default categories
+export default Categories

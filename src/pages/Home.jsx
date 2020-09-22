@@ -4,9 +4,9 @@ import {inject, observer} from "mobx-react"
 
 const categories = ['Мясные', 'Вегетарианская', 'Гриль', 'Острые', 'Закрытые']
 const sortItems = [
-  {name: 'популярности', type: 'id'},
-  {name: 'цене', type: 'price'},
-  {name: 'алфавиту', type: 'name'}
+  {name: 'популярности', type: 'rating'},
+  {name: 'цене', type: 'price', },
+  {name: 'алфавиту', type: 'name',}
 ]
 
 const home = inject(

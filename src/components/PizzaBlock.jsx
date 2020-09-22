@@ -2,7 +2,7 @@ import React from "react"
 import {inject} from "mobx-react"
 import {availableTypes} from "../consts"
 
-const pizzaBlock = inject('cartStore')
+const PizzaBlock = inject('cartStore')
 (({cartStore, id, name, sizes, types, imageUrl, price}) => {
   const [activeSize, setActiveSize] = React.useState(sizes[0])
   const [activeType, setActiveType] = React.useState(types[0])
@@ -66,4 +66,4 @@ const pizzaBlock = inject('cartStore')
   )
 })
 
-export default pizzaBlock
+export default PizzaBlock
