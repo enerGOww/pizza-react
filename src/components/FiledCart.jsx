@@ -44,7 +44,7 @@ const FiledCart = inject(
             <span onClick={() => cartStore.clearItems()}>Очистить корзину</span>
           </div>
         </div>
-        <div className="content__items">
+        <div className="content__items-cart">
           {items}
         </div>
         <div className="cart__bottom">

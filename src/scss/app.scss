@@ -23,6 +23,11 @@ body {
     margin: 35px 0;
   }
 
+  &__items-cart {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
   &__items {
     display: grid;
     grid-template: repeat(auto-fit, 500px) / repeat(auto-fill, 300px);
