@@ -1,13 +1,7 @@
 import React from "react"
 import {Categories, Sort, PizzaBlock, LoadingBlock} from "../components"
 import {inject, observer} from "mobx-react"
-
-const categories = ['Мясные', 'Вегетарианская', 'Гриль', 'Острые', 'Закрытые']
-const sortItems = [
-  {name: 'популярности', type: 'rating'},
-  {name: 'цене', type: 'price', },
-  {name: 'алфавиту', type: 'name',}
-]
+import {categories, sortItems} from "../consts";
 
 const home = inject(
   'pizzaStore'
@@ -19,7 +13,7 @@ const home = inject(
     <div className="container">
       <div className="content__top">
         <Categories categories={categories} />
-        <Sort items={sortItems}/>
+        <Sort items={sortItems} />
       </div>
       <h2 className="content__title">Все пиццы</h2>
       <div className="content__items">

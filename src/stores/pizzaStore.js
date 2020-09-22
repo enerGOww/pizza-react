@@ -1,5 +1,6 @@
 import axios from "axios"
 import {action, computed, decorate, observable} from "mobx"
+import {sortItems} from "../consts";
 
 class PizzaStore {
   constructor() {
@@ -9,7 +10,7 @@ class PizzaStore {
   items = []
   isLoading = true
 
-  sorter = {name: 'популярности', type: 'rating'}
+  sorter = sortItems[0]
   sort = true // true ASK false DESK
   category = null
 
@@ -38,7 +39,7 @@ class PizzaStore {
   }
 
   _fetchItems() {
-    return axios.get('https://pizza-react.vercel.app/db.json')
+    return axios.get('http://localhost:3000/db.json')
   }
 
   _updateItems() {

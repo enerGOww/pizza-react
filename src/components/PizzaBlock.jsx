@@ -3,11 +3,18 @@ import {inject} from "mobx-react"
 import {availableTypes} from "../consts"
 
 const PizzaBlock = inject('cartStore')
-(({cartStore, id, name, sizes, types, imageUrl, price}) => {
+(({cartStore, id, name, sizes, types, imageUrl, prices}) => {
   const [activeSize, setActiveSize] = React.useState(sizes[0])
   const [activeType, setActiveType] = React.useState(types[0])
+  const [activePrice, setActivePrice] = React.useState(prices[0])
+  const selectActiveSize = (size, index) => {
+    setActiveSize(size)
+    setActivePrice(prices[index])
+  }
 
-  const addToCard = () => cartStore.setItem({id, name, size: activeSize, type: activeType, imageUrl, price})
+  const addToCard = () => cartStore.setItem(
+    {id, name, size: activeSize, type: activeType, imageUrl, price: activePrice}
+  )
   return (
     <div className="pizza-block">
       <img
@@ -29,11 +36,11 @@ const PizzaBlock = inject('cartStore')
           ))}
         </ul>
         <ul>
-          {sizes.map(size => (
+          {sizes.map((size, index) => (
             <li
               className={activeSize === size ? 'active' : ''}
               key={size}
-              onClick={() => setActiveSize(size)}
+              onClick={() => selectActiveSize(size, index)}
             >
               {size} см.
             </li>
@@ -41,7 +48,7 @@ const PizzaBlock = inject('cartStore')
         </ul>
       </div>
       <div className="pizza-block__bottom">
-        <div className="pizza-block__price">от {price} ₽</div>
+        <div className="pizza-block__price">{activePrice} ₽</div>
         <div
           className="button button--outline button--add"
           onClick={() => addToCard()}
@@ -59,7 +66,6 @@ const PizzaBlock = inject('cartStore')
             />
           </svg>
           <span>Добавить</span>
-          <i>1</i>
         </div>
       </div>
     </div>
