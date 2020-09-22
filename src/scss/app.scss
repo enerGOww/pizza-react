@@ -24,9 +24,10 @@ body {
   }
 
   &__items {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-start;
+    display: grid;
+    grid-template: repeat(auto-fit, 500px) / repeat(auto-fill, 300px);
+    justify-content: space-around;
+    justify-items: center;
   }
 
   &__top {
@@ -58,17 +59,6 @@ body {
   .wrapper {
     width: calc(100vw - 30px);
   }
-
-  .content {
-    padding: 15px 0;
-
-    &__top {
-      display: flex;
-      align-items: center;
-      flex-wrap: wrap;
-      justify-content: space-between;
-    }
-  }
 }
 
 @media screen and (min-device-width: 320px) and (max-device-width: 630px) {
@@ -77,10 +67,6 @@ body {
   }
 
   .content {
-    &__items {
-      justify-content: space-around;
-    }
-
     &__title {
       position: relative;
       margin: 35px 0;
