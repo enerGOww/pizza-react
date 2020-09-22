@@ -70,3 +70,11 @@
     letter-spacing: 0.015em;
   }
 }
+
+@media screen and (min-device-width: 320px) and (max-device-width: 1200px) {
+  .pizza-block {
+    &:not(:nth-of-type(4n)) {
+      margin-right: 0;
+    }
+  }
+}
