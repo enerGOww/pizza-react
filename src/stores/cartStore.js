@@ -4,11 +4,11 @@ class CartStore {
   items = new Map()
 
   get totalCount() {
-    return Array.from(this.items.values()).reduce((sum, item) => sum += item.quantity, 0)
+    return Array.from(this.items.values()).reduce((sum, item) => sum + item.quantity, 0)
   }
 
   get totalPrice() {
-    return Array.from(this.items.values()).reduce((sum, item) => sum += item.price * item.quantity, 0)
+    return Array.from(this.items.values()).reduce((sum, item) => sum + item.price * item.quantity, 0)
   }
 
   setItem(item) {
@@ -31,6 +31,10 @@ class CartStore {
   }
 
   decreaseQuantity(id) {
+    if (this.items.get(id).quantity === 1) {
+      return this.deleteItemById(id)
+    }
+
     this.items.get(id).quantity--
   }
 
