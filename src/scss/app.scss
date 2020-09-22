@@ -26,7 +26,7 @@ body {
   &__items {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: flex-start;
   }
 
   &__top {
@@ -323,21 +323,25 @@ body {
   .content {
     padding: 15px 0;
 
-    &__title {
-      position: relative;
-      margin: 35px 0;
-      text-align: center;
-    }
-
-    &__items {
-      justify-content: space-around;
-    }
-
     &__top {
       display: flex;
       align-items: center;
       flex-wrap: wrap;
       justify-content: space-between;
+    }
+  }
+}
+
+@media screen and (min-device-width: 320px) and (max-device-width: 650px) {
+  .content {
+    &__items {
+      justify-content: space-around;
+    }
+
+    &__title {
+      position: relative;
+      margin: 35px 0;
+      text-align: center;
     }
   }
 }
