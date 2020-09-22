@@ -51,10 +51,11 @@ const CartPizzaBlock = inject(
 
           </div>
         </div>
-        <div className="cart__item-price">
-          <b>{price * quantity} ₽</b>
-        </div>
-        <div className="cart__item-remove" onClick={() => cartStore.deleteItemById(itemId)}>
+        <div className="cart__item-price-container">
+          <div className="cart__item-price">
+            <b>{price * quantity} ₽</b>
+          </div>
+          <div className="cart__item-remove" onClick={() => cartStore.deleteItemById(itemId)}>
           <div className="button button--outline button--circle">
             <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path
@@ -66,6 +67,7 @@ const CartPizzaBlock = inject(
             </svg>
 
           </div>
+        </div>
         </div>
       </div>
     </div>

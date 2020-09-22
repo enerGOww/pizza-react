@@ -117,11 +117,16 @@
       }
     }
 
+    &-price-container {
+      display: flex;
+      width: 37%;
+    }
+
     &-price {
       display: flex;
       align-items: center;
       justify-content: center;
-      width: 33%;
+      width: 85%;
 
       b {
         font-weight: bold;
@@ -134,7 +139,7 @@
       display: flex;
       align-items: center;
       justify-content: flex-end;
-      width: 4%;
+      width: 15%;
 
       .button {
         border-color: darken($color: $gray-line, $amount: 10);
@@ -283,7 +288,6 @@
       &-img {
         display: flex;
         flex-direction: column;
-        margin-right: 10px;
         width: 10%;
 
         img {
@@ -303,30 +307,37 @@
       &-info {
         justify-content: flex-start;
         align-items: flex-start;
-        width: 90%;
+        width: 100%;
       }
 
       &-count {
         width: 65px;
+        b {
+          margin: 5px 10px;
+        }
+      }
+
+      &-price-container {
+        width: 90%;
       }
 
       &-price {
         justify-content: flex-start;
-        width: 90%;
+        width: 60%;
       }
 
       &-remove {
         align-items: baseline;
         justify-content: flex-end;
-        width: 90%;
+        width: 40%;
       }
     }
   }
 
   .cart__bottom {
     &-details {
-      justify-content: flex-start;
       flex-direction: column;
+      align-items: center;
       span {
         font-size: 20px;
       }
@@ -334,6 +345,7 @@
 
     &-buttons {
       flex-direction: column-reverse;
+      align-items: center;
 
       .go-back-btn {
         margin-top: 10px;
