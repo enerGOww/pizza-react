@@ -32,14 +32,18 @@
   }
 }
 
-@media screen and (min-device-width: 360px) and (max-device-width: 580px) {
+@media screen and (min-device-width: 320px) and (max-device-width: 580px) {
   .header {
     padding: 20px 0;
+
     &__logo {
       margin: 0 auto;
     }
+
     &__cart {
+      display: flex;
       margin-top: 20px;
+      margin-left: auto;
     }
   }
 }

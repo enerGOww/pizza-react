@@ -32,10 +32,10 @@
   }
 }
 
-@media screen and (min-device-width: 360px) and (max-device-width: 580px) {
+@media screen and (min-device-width: 360px) and (max-device-width: 930px) {
   .categories {
     ul {
-      justify-content: space-between;
+      justify-content: flex-start;
     }
   }
 }
