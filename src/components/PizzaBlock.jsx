@@ -42,7 +42,10 @@ const pizzaBlock = inject('cartStore')
       </div>
       <div className="pizza-block__bottom">
         <div className="pizza-block__price">от {price} ₽</div>
-        <div className="button button--outline button--add">
+        <div
+          className="button button--outline button--add"
+          onClick={() => addToCard()}
+        >
           <svg
             width="12"
             height="12"
@@ -55,7 +58,7 @@ const pizzaBlock = inject('cartStore')
               fill="white"
             />
           </svg>
-          <span onClick={() => addToCard()}>Добавить</span>
+          <span>Добавить</span>
           <i>1</i>
         </div>
       </div>

@@ -3,7 +3,7 @@ import {action, computed, decorate, observable} from "mobx"
 
 class PizzaStore {
   constructor() {
-    this.updateItems()
+    this._updateItems()
   }
 
   items = []
@@ -36,7 +36,7 @@ class PizzaStore {
     return axios.get('https://pizza-react.vercel.app/db.json')
   }
 
-  updateItems() {
+  _updateItems() {
     this._fetchItems().then(({data}) => {
       this.setItems(data.pizzas)
     })
