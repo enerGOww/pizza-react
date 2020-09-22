@@ -49,10 +49,13 @@ class PizzaStore {
   }
 
   _compare(a, b) {
-    if (a[this.sorter.type] < b[this.sorter.type]) {
+    const valueA = typeof a[this.sorter.type] === 'object' ? a[this.sorter.type][0] : a[this.sorter.type]
+    const valueB = typeof b[this.sorter.type] === 'object' ? b[this.sorter.type][0] : b[this.sorter.type]
+
+    if (valueA < valueB) {
       return -1
     }
-    if (a[this.sorter.type] > b[this.sorter.type]) {
+    if (valueA > valueB) {
       return 1
     }
 
