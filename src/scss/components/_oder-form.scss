@@ -1,0 +1,78 @@
+@import 'variables';
+
+.form {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  padding: 32px;
+  border-radius: 10px;
+  box-shadow: 0 4px 16px #ccc;
+  font-family: sans-serif;
+  letter-spacing: 1px;
+
+  &__title {
+    text-align: center;
+    margin: 0 0 32px 0;
+    font-weight: normal;
+  }
+
+  &__group {
+    position: relative;
+    margin-bottom: 32px;
+  }
+
+  &__input {
+    width: 100%;
+    padding: 0 0 10px 0;
+    border: none;
+    border-bottom: 1px solid #d2cccc;
+    background: transparent;
+    font-size: 18px;
+    outline: none;
+    transition: 0.3s;
+    z-index: 2;
+
+    &:focus {
+      border-bottom: 1px solid $orange;
+    }
+
+    &:focus ~ .form__label {
+      top: -18px;
+      font-size:12px;
+    }
+
+    &:not(:placeholder-shown) ~ .form__label {
+      top: -18px;
+      font-size:12px;
+    }
+  }
+
+  &__label {
+    position: absolute;
+    top: 0;
+    left: 2px;
+    z-index: 1;
+    color: #9e9e9e;
+    transition: 0.3s;
+  }
+
+  &__button {
+    margin: 0 auto;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    letter-spacing: 1px;
+    font-size: 16px;
+    color: #fff;
+    background-color: $orange;
+    cursor: pointer;
+
+    &:focus {
+      background-color: darken($orange, 8%);
+    }
+
+    &:hover {
+      background-color: darken($orange, 8%);
+    }
+  }
+}

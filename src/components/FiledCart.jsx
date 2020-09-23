@@ -1,7 +1,7 @@
 import React from "react"
 import {inject, observer} from "mobx-react"
 import {Link} from "react-router-dom"
-import {CartPizzaBlock} from "./index"
+import {Button, CartPizzaBlock} from "./index"
 
 const FiledCart = inject(
   'cartStore'
@@ -62,9 +62,11 @@ const FiledCart = inject(
                   <span>Вернуться назад</span>
               </button>
             </Link>
-            <div className="button pay-btn">
-              <span onClick={() => cartStore.clearItems()}>Оплатить сейчас</span>
-            </div>
+            <Link to="/orderForm">
+              <Button className="pay-btn">
+                <span>Оплатить сейчас</span>
+              </Button>
+            </Link>
           </div>
         </div>
       </div>

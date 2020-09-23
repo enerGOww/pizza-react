@@ -1,7 +1,7 @@
 import React from "react"
 import "./scss/app.scss"
 import {Route} from "react-router-dom"
-import {Cart, Home} from "./pages"
+import {Cart, Home, OrderForm} from "./pages"
 import {Header} from "./components"
 
 function App() {
@@ -11,6 +11,7 @@ function App() {
       <div className="content">
         <Route path="/" component={Home} exact />
         <Route path="/cart" component={Cart} />
+        <Route path="/orderForm" component={OrderForm} exact />
       </div>
     </div>
   )
