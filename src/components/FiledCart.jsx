@@ -1,15 +1,19 @@
 import React from "react"
 import {inject, observer} from "mobx-react"
 import {Link} from "react-router-dom"
-import {Button, CartPizzaBlock} from "./index"
+import {CartPizzaBlock, OrderForm} from "./index"
 
 const FiledCart = inject(
   'cartStore'
 )(observer(({cartStore}) => {
   const items = []
+  const [isOpen, setIsOpen] = React.useState(false)
+  const closeHandler = () => setIsOpen(false)
+
   cartStore.items.forEach((item, key) => {
     items.push(<CartPizzaBlock key={key} {...item} itemId={key} />)
   })
+
   return (
     <div className="container container--cart">
       <div className="cart">
@@ -62,11 +66,10 @@ const FiledCart = inject(
                   <span>Вернуться назад</span>
               </button>
             </Link>
-            <Link to="/orderForm">
-              <Button className="pay-btn">
-                <span>Оплатить сейчас</span>
-              </Button>
-            </Link>
+            <button onClick={() => setIsOpen(true)} className="button pay-btn">
+              <span>Оплатить сейчас</span>
+            </button>
+            <OrderForm isOpen={isOpen} closeHandler={closeHandler} />
           </div>
         </div>
       </div>

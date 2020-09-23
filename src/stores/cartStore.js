@@ -3,6 +3,8 @@ import {action, computed, decorate, observable} from "mobx";
 class CartStore {
   items = new Map()
 
+  isOrdered = false
+
   get totalCount() {
     return Array.from(this.items.values()).reduce((sum, item) => sum + item.quantity, 0)
   }
@@ -20,6 +22,10 @@ class CartStore {
 
     item.quantity = 1
     this.items.set(id, item)
+  }
+
+  setIsOrdered(isOrdered) {
+    this.isOrdered = isOrdered
   }
 
   deleteItemById(id) {
@@ -49,6 +55,7 @@ class CartStore {
 
 decorate(CartStore, {
   items: observable,
+  isOrdered: observable,
   totalCount: computed,
   totalPrice: computed,
   setItem: action,
@@ -56,6 +63,7 @@ decorate(CartStore, {
   decreaseQuantity: action,
   clearItems: action,
   deleteItemById: action,
+  setIsOrdered: action,
 })
 
 export default CartStore

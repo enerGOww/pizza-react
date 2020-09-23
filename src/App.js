@@ -11,7 +11,6 @@ function App() {
       <div className="content">
         <Route path="/" component={Home} exact />
         <Route path="/cart" component={Cart} />
-        <Route path="/orderForm" component={OrderForm} exact />
       </div>
     </div>
   )
